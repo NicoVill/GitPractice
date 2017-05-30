@@ -27,18 +27,26 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Content="Name"/>
-            <TextBox Grid.Column="1" Margin="5,5,5,5"/>
+            <TextBox Grid.Column="1" Margin="5,5,5,5" Text="{Binding ElementName=lb_Persons, Path=SelectedItem.Name}"/>
             <Label Content="Email" Grid.Row="1"/>
-            <TextBox Grid.Column="1" Grid.Row="1" Margin="5,5,5,5"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Margin="5,5,5,5" Text="{Binding ElementName=lb_Persons, Path=SelectedItem.Email}"/>
             <Label Content="Country" Grid.Row="2"/>
-            <TextBox Grid.Column="1" Grid.Row="2" Margin="5,5,5,5"/>
+            <TextBox Grid.Column="1" Grid.Row="2" Margin="5,5,5,5" Text="{Binding ElementName=lb_Persons, Path=SelectedItem.Country}"/>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <ListBox Grid.Column="1" Margin="10,10,10,10"/>
+            <ListView Name="lb_Persons" Grid.Column="1" Margin="10,10,10,10" ItemsSource="{Binding Persons}" DisplayMemberPath="Name">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="100"/>
+                        <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" Width="100"/>
+                        <GridViewColumn Header="Country" DisplayMemberBinding="{Binding Country}" Width="100"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -54,8 +55,16 @@ namespace GitPractice.ViewModel
                 RaisePropertyChangedEvent("Country");
             }
         }
+
+        ObservableCollection<Model.Person> persons;
+        public ObservableCollection<Model.Person> Persons{ get { return persons; } set { persons = value; } }
         public MainViewModel()
         {
+            persons = new ObservableCollection<Model.Person>();
+            persons.Add(new Model.Person() { Name = "Nicolaj", Email = "123@mail.now", Country = "Denmark" });
+            persons.Add(new Model.Person() { Name = "Sandre", Email = "123@mail.now", Country = "Serbia" });
+            persons.Add(new Model.Person() { Name = "Chris", Email = "123@mail.now", Country = "Sweden" });
+
 
         }
     }
